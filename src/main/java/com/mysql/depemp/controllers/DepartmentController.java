@@ -34,10 +34,10 @@ public class DepartmentController {
 	}
 	
 	@PutMapping(path="/update", consumes={"application/json"})
-	public String editDepartment(@RequestBody Department dep)
+	public Department editDepartment(@RequestBody Department dep)
 	{
 		depRepo.save(dep);
-		return "Updated department";
+		return dep;
 	}
 	
 	@PostMapping(path="/add", consumes={"application/json"})
