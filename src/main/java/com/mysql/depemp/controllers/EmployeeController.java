@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mysql.depemp.dao.DepartmentRepo;
 import com.mysql.depemp.dao.EmployeeRepo;
 import com.mysql.depemp.models.Employee;
+import com.mysql.depemp.models.Department;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -25,11 +27,22 @@ public class EmployeeController {
 	@Autowired
 	EmployeeRepo empRepo;
 	
+	@Autowired
+	DepartmentRepo depRepo;
+	
 	@GetMapping("/show")
 	public List<Employee> showEmployees()
 	{
 		List<Employee> tempList = new ArrayList<Employee>();
 		tempList = empRepo.findAll();
+		return tempList;
+	}
+	
+	@GetMapping("/departments")
+	public List<Department> getDepartments()
+	{
+		List<Department> tempList = new ArrayList<Department>();
+		tempList = depRepo.findAll();
 		return tempList;
 	}
 	
